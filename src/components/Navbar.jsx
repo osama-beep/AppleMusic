@@ -7,6 +7,7 @@ import {
   FaRegSquare,
   FaBroadcastTower,
 } from "react-icons/fa";
+import DesktopPlayer from "./DesktopPlayer";
 
 const StyledBootstrapNavbar = styled(BootstrapNavbar)`
   background-color: #242424;
@@ -50,7 +51,7 @@ const CustomToggler = styled(BootstrapNavbar.Toggle)`
 
 const WhiteLogo = styled.img`
   filter: brightness(0) invert(1);
-  height: 30px;
+  height: 20px;
   width: auto;
 `;
 
@@ -81,7 +82,7 @@ const SearchIcon = styled(FaSearch)`
 `;
 
 const DesktopNavbar = styled.nav`
-  width: 200px;
+  width: 250px;
   height: 100vh;
   background-color: #242424;
   position: fixed;
@@ -89,8 +90,8 @@ const DesktopNavbar = styled.nav`
   top: 0;
   display: none;
   flex-direction: column;
-  align-items: center;
   padding: 20px 0;
+  z-index: 1000;
 
   @media (min-width: 992px) {
     display: flex;
@@ -100,6 +101,7 @@ const DesktopNavbar = styled.nav`
 const DesktopLogo = styled.img`
   width: 60px;
   margin-bottom: 30px;
+  filter: brightness(0) invert(1);
 `;
 
 const SearchContainer = styled.div`
@@ -110,23 +112,24 @@ const SearchContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   margin-bottom: 20px;
+  padding-left: 15px;
 `;
 
 const DesktopNavLink = styled.a`
   display: flex;
-  flex-direction: row; // Cambiato in row per allineare icona e testo orizzontalmente
+  flex-direction: row;
   align-items: center;
-  justify-content: flex-start; // Allinea gli elementi a sinistra
+  justify-content: flex-start;
   text-decoration: none;
-  color: #fff;
+  color: #fa586a;
   margin-bottom: 20px;
-  width: 160px; // Larghezza fissa per tutti i link
-  padding: 10px;
+  width: 160px;
+  padding: 10px 15px;
 
   &:hover {
-    color: #fa586a;
+    color: #ff7a8a;
     background-color: #1c1c1e;
     border-radius: 10px;
   }
@@ -134,11 +137,20 @@ const DesktopNavLink = styled.a`
 
 const NavIcon = styled.div`
   font-size: 24px;
-  margin-right: 15px; // Aggiunto margine a destra per separare l'icona dal testo
+  margin-right: 15px;
+  color: #fa586a;
 `;
 
 const NavText = styled.span`
-  font-size: 14px; // Aumentata la dimensione del testo
+  font-size: 14px;
+  color: #fa586a;
+`;
+
+const MainContent = styled.div`
+  @media (min-width: 992px) {
+    margin-left: 250px;
+    margin-top: 60px;
+  }
 `;
 const Navbar = () => {
   return (
@@ -173,8 +185,10 @@ const Navbar = () => {
       <DesktopNavbar>
         <DesktopLogo src="src\assets\logos\music.svg" alt="Apple Music Logo" />
         <SearchContainer>
-          <SearchIcon style={{ fontSize: "20px", marginRight: "10px" }} />
-          <NavText>Cerca</NavText>
+          <SearchIcon
+            style={{ fontSize: "20px", marginRight: "10px", color: "#fa586a" }}
+          />
+          <NavText style={{ color: "#fa586a" }}>Cerca</NavText>
         </SearchContainer>
         <DesktopNavLink href="#">
           <NavIcon>
@@ -195,6 +209,12 @@ const Navbar = () => {
           <NavText>Radio</NavText>
         </DesktopNavLink>
       </DesktopNavbar>
+
+      <DesktopPlayer className="d-none d-lg-block" />
+
+      <MainContent>
+        {/* Qui andrà il contenuto principale della tua applicazione */}
+      </MainContent>
     </>
   );
 };

@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { FaPlay, FaForward } from "react-icons/fa";
 
@@ -39,7 +38,7 @@ const ControlButton = styled.button`
 
 const MobilePlayer = ({ songImage }) => {
   return (
-    <PlayerContainer>
+    <PlayerContainer className="d-flex d-lg-none">
       <SongImage src={songImage} alt="Song cover" />
       <ControlsContainer>
         <ControlButton>
